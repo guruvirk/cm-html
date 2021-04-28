@@ -1389,6 +1389,7 @@ div#preloader {
 }
 
 .sus-btn {
+  margin-top: 15px;
   background: #fff none repeat scroll 0 0;
   border: 2px solid #fff;
   color: #2480fd;
