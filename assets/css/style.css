@@ -557,6 +557,37 @@ div#preloader {
   right: 50px;
 }
 
+
+#success {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#success .hero-container {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  top: 100px;
+  left: 50px;
+  right: 50px;
+}
+
+.heading {
+  color: #2480fd;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.heading2 {
+  color: #000;
+  width: 100%;
+  text-align: center;
+}
+
 #hero .container {
   text-align: center;
 }
