@@ -341,7 +341,7 @@ div#preloader {
 }
 
 .navbar a i {
-  font-size: 12px;
+  font-size: 16px;
   line-height: 0;
   margin-left: 5px;
 }
@@ -580,6 +580,16 @@ div#preloader {
   font-weight: bold;
   width: 100%;
   text-align: center;
+}
+
+.headingContact {
+  border: solid 5px;
+  border-radius: 39px;
+  padding-top: 10px;
+}
+
+.headingContact p {
+ color: #2480fd !important;
 }
 
 .heading2 {
