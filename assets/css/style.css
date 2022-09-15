@@ -2259,16 +2259,25 @@ span.email-notes {
 
 .call-button {
   z-index: 1;
+  font-size: 22px;
   position: fixed;
   top: auto;
   left: auto;
   bottom: 70px;
   right: 20px;
-  height: 100px;
-  width: 100px;
   background: #2480fd;
-  border-radius: 50%;
+  color: white;
+  border-radius: 30px;
+  padding: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
+
+.call-button:hover {
+  background: #2480fd !important;
+  color: white !important;
+}
+
 
 .call-button-icon {
   font-size: 45px;
@@ -2604,19 +2613,23 @@ span.email-notes {
   .slider-content {
     padding: 0;
   }
+
   .call-button {
     z-index: 1;
+    font-size: 20px;
     position: fixed;
     top: auto;
     left: auto;
     bottom: 70px;
     right: 15px;
-    height: 70px;
-    width: 70px;
     background: #2480fd;
-    border-radius: 50%;
+    color: white;
+    border-radius: 30px;
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
-  
+
   .call-button-icon {
     font-size: 30px;
     line-height: 2.4;
