@@ -779,6 +779,7 @@ div#preloader {
   font-size: 36px;
   line-height: 36px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .section-headline.services-head>h2 {
@@ -2148,6 +2149,14 @@ span.email-notes {
   padding-top: 30px;
 }
 
+.image-house-one {
+  margin-top: 70px;
+}
+
+.image-house-two {
+  margin-top: 90px;
+}
+
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -2666,4 +2675,13 @@ span.email-notes {
     margin-left: 20px;
     color: white;
   }
+
+  .image-house-one {
+    margin-top: 20px;
+  }
+  
+  .image-house-two {
+    margin-top: 30px;
+  }
+
 }
