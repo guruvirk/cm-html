@@ -100,8 +100,8 @@
         <ul>
           <li><a class="nav-link scrollto" href="index.html">Home</a></li>
           <li><a class="nav-link scrollto" href="index.html#about">About</a></li>
-          <li><a class="nav-link scrollto active" href="index.html#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="products.html">Products</a></li>
+          <li><a class="nav-link scrollto" href="index.html#services">Services</a></li>
+          <li><a class="nav-link scrollto active" href="products.html">Products</a></li>
           <!-- <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li> -->
           <li><a class="nav-link scrollto" href="index.html#review">Review</a></li>
           <li><a href="http://quotes.comfortmovers.co.nz/">Instant Quote</a></li>
@@ -135,7 +135,7 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-    <div id="services" style="margin-top: 60px;" class="about-area area-padding">
+    <div id="products" style="margin-top: 60px;" class="about-area area-padding">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-sm-12 col-xs-12">
@@ -365,80 +365,149 @@
 
   <script>
 
-    let data = [{
-      img: "product-1.png",
-      name: "Port-A-Robe",
-      price: "5"
-    },
-    {
-      img: "product-1.png",
-      name: "Port-A-Robe",
-      price: "5"
-    },
-    {
-      img: "product-1.png",
-      name: "Port-A-Robe",
-      price: "5"
-    },
-    {
-      img: "product-1.png",
-      name: "Port-A-Robe",
-      price: "5"
-    },
-    {
-      img: "product-1.png",
-      name: "Port-A-Robe",
-      price: "5"
-    },
-    {
-      img: "product-1.png",
-      name: "Port-A-Robe",
-      price: "5"
-    }]
+    let data = [
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5"
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5"
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5"
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5"
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5"
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5"
+      }
+    ]
+
+    let movingBundles = [
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5",
+        items: ["10 Medium Crates",
+          "5 Big Crates",
+          "1 Tape",
+          "Paper Roll-2.5Kg",
+          "1 Mattress Cover"]
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5",
+        items: ["10 Medium Crates",
+          "5 Big Crates",
+          "1 Tape",
+          "Paper Roll-2.5Kg",
+          "1 Mattress Cover"]
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5",
+        items: ["10 Medium Crates",
+          "5 Big Crates",
+          "1 Tape",
+          "Paper Roll-2.5Kg",
+          "1 Mattress Cover"]
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5",
+        items: ["10 Medium Crates",
+          "5 Big Crates",
+          "1 Tape",
+          "Paper Roll-2.5Kg",
+          "1 Mattress Cover"]
+      },
+      {
+        img: "product-1.png",
+        name: "Port-A-Robe",
+        price: "5",
+        items: ["10 Medium Crates",
+          "5 Big Crates",
+          "1 Tape",
+          "Paper Roll-2.5Kg",
+          "1 Mattress Cover"]
+      }
+    ]
 
     for (const item of data) {
       $('#all-products').append(`
       <div class="col-md-4 col-sm-4 col-xs-12">
         <div class="product-card card" style="width: 18rem;">
-          <img src="assets/img/products/${item.img}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>${item.name}</h5>
-              <h6><b>Price: </b>${item.price}</h6>
-              <a href="#contact" class="product-button">Place an order</a>
-            </div>
+          <img src="assets/img/products/${item.img}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="product-item">${item.name}</h5>
+            <h6 class="product-item"><b>Price: </b>$${item.price}</h6>
+            <a href="#contact" class="product-button">Place an order</a>
           </div>
         </div>
+      </div>
       `);
     }
 
-    for (const item of data) {
-      $('#moving-products').append(`
-      <div class="col-md-4 col-sm-4 col-xs-12">
+    for (const item of movingBundles) {
+      let dataElement = `<div class="col-md-4 col-sm-4 col-xs-12">
         <div class="product-card card" style="width: 18rem;">
-          <img src="assets/img/products/${item.img}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>${item.name}</h5>
-              <h6><b>Price: </b>${item.price}</h6>
-              <a href="#contact" class="product-button">Place an order</a>
-            </div>
+          <img src="assets/img/products/${item.img}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="product-item">${item.name}</h5>
+            <h6 class="product-item"><b>Price: </b>$${item.price}</h6>`
+      if (item.items && item.items.length) {
+        dataElement = dataElement + `<h6 style="margin-top: 15px; text-align: left;" class="product-item"><b>Items: </b></h6>
+            <ul class="product-item producs-item-list">`
+        for (const elem of item.items) {
+          dataElement = dataElement + `<li>${elem}</li>`
+        }
+        dataElement = dataElement + `</ul>`
+      }
+      dataElement = dataElement + `<a href="#contact" class="product-button">Place an order</a>
           </div>
         </div>
-      `);
+      </div>`
+      $('#moving-products').append(dataElement);
     }
 
-    for (const item of data) {
-      $('#eco-products').append(`
-      <div class="col-md-4 col-sm-4 col-xs-12">
+    for (const item of movingBundles) {
+      let dataElement = `<div class="col-md-4 col-sm-4 col-xs-12">
         <div class="product-card card" style="width: 18rem;">
-          <img src="assets/img/products/${item.img}" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5>${item.name}</h5>
-              <h6><b>Price: </b>${item.price}</h6>
-              <a href="#contact" class="product-button">Place an order</a>
-            </div>
+          <img src="assets/img/products/${item.img}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="product-item">${item.name}</h5>
+            <h6 class="product-item"><b>Price: </b>$${item.price}</h6>`
+      if (item.items && item.items.length) {
+        dataElement = dataElement + `<h6 style="margin-top: 15px; text-align: left;" class="product-item"><b>Items: </b></h6>
+            <ul class="product-item producs-item-list">`
+        for (const elem of item.items) {
+          dataElement = dataElement + `<li>${elem}</li>`
+        }
+        dataElement = dataElement + `</ul>`
+      }
+      dataElement = dataElement + `<a href="#contact" class="product-button">Place an order</a>
           </div>
         </div>
-      `);
+      </div>`
+      $('#eco-products').append(dataElement);
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);

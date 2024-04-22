@@ -2783,6 +2783,10 @@ button.active {
   color: white !important;
 }
 
+button {
+  border: none !important;
+}
+
 .tab-nav-box {
   border-bottom: none;
   width: 70%;
@@ -2793,7 +2797,21 @@ button.active {
   width: 70%;
   margin: auto;
 }
- 
+
 .product-form-item {
   padding: 5px;
+}
+
+.product-item {
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.producs-item-list {
+  font-size: 12px;
+}
+
+.producs-item-list li {
+  text-align: left;
 }
