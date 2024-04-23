@@ -365,150 +365,98 @@
 
   <script>
 
-    let data = [
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5"
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5"
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5"
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5"
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5"
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5"
+    const select = (el, all = false) => {
+      el = el.trim()
+      if (all) {
+        return [...document.querySelectorAll(el)]
+      } else {
+        return document.querySelector(el)
       }
-    ]
-
-    let movingBundles = [
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5",
-        items: ["10 Medium Crates",
-          "5 Big Crates",
-          "1 Tape",
-          "Paper Roll-2.5Kg",
-          "1 Mattress Cover"]
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5",
-        items: ["10 Medium Crates",
-          "5 Big Crates",
-          "1 Tape",
-          "Paper Roll-2.5Kg",
-          "1 Mattress Cover"]
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5",
-        items: ["10 Medium Crates",
-          "5 Big Crates",
-          "1 Tape",
-          "Paper Roll-2.5Kg",
-          "1 Mattress Cover"]
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5",
-        items: ["10 Medium Crates",
-          "5 Big Crates",
-          "1 Tape",
-          "Paper Roll-2.5Kg",
-          "1 Mattress Cover"]
-      },
-      {
-        img: "product-1.png",
-        name: "Port-A-Robe",
-        price: "5",
-        items: ["10 Medium Crates",
-          "5 Big Crates",
-          "1 Tape",
-          "Paper Roll-2.5Kg",
-          "1 Mattress Cover"]
-      }
-    ]
-
-    for (const item of data) {
-      $('#all-products').append(`
-      <div class="col-md-4 col-sm-4 col-xs-12">
-        <div class="product-card card" style="width: 18rem;">
-          <img src="assets/img/products/${item.img}" class="card-img-top">
-          <div class="card-body">
-            <h5 class="product-item">${item.name}</h5>
-            <h6 class="product-item"><b>Price: </b>$${item.price}</h6>
-            <a href="#contact" class="product-button">Place an order</a>
-          </div>
-        </div>
-      </div>
-      `);
     }
 
-    for (const item of movingBundles) {
-      let dataElement = `<div class="col-md-4 col-sm-4 col-xs-12">
-        <div class="product-card card" style="width: 18rem;">
-          <img src="assets/img/products/${item.img}" class="card-img-top">
-          <div class="card-body">
-            <h5 class="product-item">${item.name}</h5>
-            <h6 class="product-item"><b>Price: </b>$${item.price}</h6>`
-      if (item.items && item.items.length) {
-        dataElement = dataElement + `<h6 style="margin-top: 15px; text-align: left;" class="product-item"><b>Items: </b></h6>
-            <ul class="product-item producs-item-list">`
-        for (const elem of item.items) {
-          dataElement = dataElement + `<li>${elem}</li>`
+    $("body").append('<div id="preloader"></div>')
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == XMLHttpRequest.DONE) {
+
+        let preloader = select('#preloader');
+        if (preloader) {
+          preloader.remove()
         }
-        dataElement = dataElement + `</ul>`
-      }
-      dataElement = dataElement + `<a href="#contact" class="product-button">Place an order</a>
-          </div>
-        </div>
-      </div>`
-      $('#moving-products').append(dataElement);
-    }
 
-    for (const item of movingBundles) {
-      let dataElement = `<div class="col-md-4 col-sm-4 col-xs-12">
-        <div class="product-card card" style="width: 18rem;">
-          <img src="assets/img/products/${item.img}" class="card-img-top">
-          <div class="card-body">
-            <h5 class="product-item">${item.name}</h5>
-            <h6 class="product-item"><b>Price: </b>$${item.price}</h6>`
-      if (item.items && item.items.length) {
-        dataElement = dataElement + `<h6 style="margin-top: 15px; text-align: left;" class="product-item"><b>Items: </b></h6>
-            <ul class="product-item producs-item-list">`
-        for (const elem of item.items) {
-          dataElement = dataElement + `<li>${elem}</li>`
+        let resp = JSON.parse(xhr.response)
+        if (resp && resp.isSuccess) {
+
+          if (resp.page && resp.page.items && resp.page.items.length) {
+
+            for (const item of resp.page.items.filter(i => i.category == "all")) {
+              $('#all-products').append(`
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                  <div class="product-card card" style="width: 18rem;">
+                    <img src="assets/img/products/${item.photo}" class="card-img-top">
+                    <div class="card-body">
+                      <h5 class="product-item">${item.name}</h5>
+                      <h6 class="product-item"><b>Price: </b>$${item.price}</h6>
+                      <a href="#contact" class="product-button">Place an order</a>
+                    </div>
+                  </div>
+                </div>
+                `);
+            }
+
+            for (const item of resp.page.items.filter(i => i.category == "moving")) {
+              let dataElement = `<div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="product-card card" style="width: 18rem;">
+                <img src="assets/img/products/${item.photo}" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="product-item">${item.name}</h5>
+                  <h6 class="product-item"><b>Price: </b>$${item.price}</h6>`
+              if (item.items && item.items.length) {
+                dataElement = dataElement + `<h6 style="margin-top: 15px; text-align: left;" class="product-item"><b>Items: </b></h6>
+                <ul class="product-item producs-item-list">`
+                for (const elem of item.items) {
+                  dataElement = dataElement + `<li>${elem}</li>`
+                }
+                dataElement = dataElement + `</ul>`
+              }
+              dataElement = dataElement + `<a href="#contact" class="product-button">Place an order</a>
+                  </div>
+                </div>
+              </div>`
+              $('#moving-products').append(dataElement);
+            }
+
+            for (const item of resp.page.items.filter(i => i.category == "eco")) {
+              let dataElement = `<div class="col-md-4 col-sm-4 col-xs-12">
+              <div class="product-card card" style="width: 18rem;">
+                <img src="assets/img/products/${item.photo}" class="card-img-top">
+                <div class="card-body">
+                  <h5 class="product-item">${item.name}</h5>
+                  <h6 class="product-item"><b>Price: </b>$${item.price}</h6>`
+              if (item.items && item.items.length) {
+                dataElement = dataElement + `<h6 style="margin-top: 15px; text-align: left;" class="product-item"><b>Items: </b></h6>
+              <ul class="product-item producs-item-list">`
+                for (const elem of item.items) {
+                  dataElement = dataElement + `<li>${elem}</li>`
+                }
+                dataElement = dataElement + `</ul>`
+              }
+              dataElement = dataElement + `<a href="#contact" class="product-button">Place an order</a>
+                  </div>
+                </div>
+              </div>`
+              $('#eco-products').append(dataElement);
+            }
+          }
         }
-        dataElement = dataElement + `</ul>`
       }
-      dataElement = dataElement + `<a href="#contact" class="product-button">Place an order</a>
-          </div>
-        </div>
-      </div>`
-      $('#eco-products').append(dataElement);
     }
+    xhr.open("GET", "http://localhost:8080/api/products", true);
+    // xhr.open("POST", "https://comfortcare.co.nz/cm/api/products", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('x-tenant', 'cm');
+    xhr.send();
 
     google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -598,21 +546,27 @@
         return false
       }
 
+      $("body").append('<div id="preloader"></div>')
+
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
         if (xhr.readyState == XMLHttpRequest.DONE) {
+          let preloader = select('#preloader');
+          if (preloader) {
+            preloader.remove()
+          }
           let resp = JSON.parse(xhr.response)
           if (resp && resp.isSuccess) {
             window.scrollTo(0, 0);
             document.getElementById("contactForm").reset();
-            alert(`Quote submitted succesfully your Referance No is ${resp.data.code}`);
+            alert(`Quote submitted succesfully.`);
           }
         }
       }
-      xhr.open("POST", "http://localhost:8080/api/create-order", true);
+      xhr.open("POST", "http://localhost:8080/api/queries", true);
       // xhr.open("POST", "https://comfortcare.co.nz/me/api/create-order", true);
       xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.setRequestHeader('x-tenant', 'me');
+      xhr.setRequestHeader('x-tenant', 'cm');
       xhr.send(JSON.stringify({
         name: name.val(),
         email: email.val(),
