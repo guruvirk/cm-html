@@ -374,13 +374,13 @@
       }
     }
 
-    $("body").append('<div id="preloader"></div>')
+    $("body").append('<div id="preloader2"></div>')
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {
       if (xhr.readyState == XMLHttpRequest.DONE) {
 
-        let preloader = select('#preloader');
+        let preloader = select('#preloader2');
         if (preloader) {
           preloader.remove()
         }
@@ -392,7 +392,7 @@
 
             for (const item of resp.page.items.filter(i => i.category == "all")) {
               $('#all-products').append(`
-                <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="col-md-3 col-sm-3 col-xs-12">
                   <div class="product-card card" style="width: 18rem;">
                     <img src="assets/img/products/${item.photo}" class="card-img-top">
                     <div class="card-body">
@@ -406,7 +406,7 @@
             }
 
             for (const item of resp.page.items.filter(i => i.category == "moving")) {
-              let dataElement = `<div class="col-md-4 col-sm-4 col-xs-12">
+              let dataElement = `<div class="col-md-3 col-sm-3 col-xs-12">
               <div class="product-card card" style="width: 18rem;">
                 <img src="assets/img/products/${item.photo}" class="card-img-top">
                 <div class="card-body">
@@ -428,7 +428,7 @@
             }
 
             for (const item of resp.page.items.filter(i => i.category == "eco")) {
-              let dataElement = `<div class="col-md-4 col-sm-4 col-xs-12">
+              let dataElement = `<div class="col-md-3 col-sm-3 col-xs-12">
               <div class="product-card card" style="width: 18rem;">
                 <img src="assets/img/products/${item.photo}" class="card-img-top">
                 <div class="card-body">
@@ -457,8 +457,6 @@
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.setRequestHeader('x-tenant', 'cm');
     xhr.send();
-
-    google.maps.event.addDomListener(window, 'load', initialize);
 
     function onlyNumberKey(evt) {
       var ASCIICode = (evt.which) ? evt.which : evt.keyCode
